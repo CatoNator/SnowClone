@@ -1,0 +1,45 @@
+//test comment, this is all ignored
+int x = 0;
+int y = 0;
+
+int xspeed = 0;
+int yspeed = 0;
+
+/*this is a comment*/
+int AnimationIndex = 0;
+float ImageIndex = 0.0;
+
+/*this is a comment, it should be ignored
+even in multiline form*/
+func void Spawn()
+{
+	xspeed = 0;
+	yspeed = 0;
+}
+
+func void Update()
+{
+	if (IsButtonHeld(KEY_LEFT)):
+		xspeed = -2;	
+	else if (IsButtonHeld(KEY_RIGHT)):
+		xspeed = 2;
+	else
+		xspeed = 0;
+
+	if (IsButtonHeld(KEY_UP)):
+		yspeed = -2;
+	else if (IsButtonHeld(KEY_DOWN)):
+		yspeed = 2;
+	else
+		yspeed = 0;
+
+	x += xspeed;
+	y += yspeed;
+	
+	ImageIndex = (ImageIndex + 0.25) % 6;
+}
+
+func void Draw()
+{
+	DrawSprite(x, y, AnimationIndex, ImageIndex);
+}

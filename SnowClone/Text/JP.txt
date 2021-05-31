@@ -1,0 +1,15 @@
+string_test=Test string
+multiline_test=おはようございます！{b}私は{c=2}ゲームくん{c=0}！{b}よろしくね。
+colour_test={c=2}レッド。 {c=3}グリーン。 {c=1}ブルー。
+speed_test={s=9}Slow typing. {s=0}Fast text.
+pause_test=There's a pause after this.{w=120} Nice.
+#dev menu strings, no need to translate!
+dev_menu_boot=Regular startup sequence
+dev_menu_stage=Jump to stage
+#generic menu strings
+menu_confirm=かくにん
+menu_cancel=キャンセル 
+menu_yes=はい
+menu_no=いいえ
+menu_apply=アプライ
+menu_back=バック 

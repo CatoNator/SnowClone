@@ -1,0 +1,17 @@
+string_test=Test string
+multiline_test=Line one.{b}Line two.{b}Line three.
+colour_test={c=2}Red. {c=3}Green. {c=1}Blue.
+speed_test={s=9}Slow typing. {s=0}Fast text.
+pause_test=There's a pause after this.{w=120} Nice.
+#dev menu strings, no need to translate!
+dev_menu_boot=Regular startup sequence
+dev_menu_stage=Jump to stage: 
+dev_menu_script=Load script: 
+dev_menu_exit=Quit game
+#generic menu strings
+menu_confirm=Confirm
+menu_cancel=Cancel
+menu_yes=Yes
+menu_no=No
+menu_apply=Apply
+menu_back=Back
