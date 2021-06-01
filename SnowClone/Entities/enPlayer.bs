@@ -1,0 +1,117 @@
+//test comment, this is all ignored
+int x = 0;
+int y = 0;
+
+int xspeed = 0;
+int yspeed = 0;
+
+int PlayerHeight = 11; //11px, in the penguin sprite
+
+int Landed = 0;
+
+/*this is a comment*/
+int AnimationIndex = 0;
+float ImageIndex = 0.0;
+
+/*this is a comment, it should be ignored
+even in multiline form*/
+func void Spawn()
+{
+	xspeed = 0;
+	yspeed = 0;
+}
+
+func void Update()
+{
+	//floor collision
+	//int CollisionOrigin = CheckTileCollisionPoint(0, x, y);
+	//int CollisionFeet = CheckTileCollisionPoint(0, x, y + PlayerHeight);
+	
+	//check solidity at feet level
+	if (GetTileSolidityPoint(0, x, y + PlayerHeight)):
+	{
+		//if the tile below is a full tile
+		int TileY = ((y + PlayerHeight) / 16) * 16;
+		int CurrentTileFloorHeight = GetTileFloorPoint(0, x, y + PlayerHeight);
+		
+		int FloorHeight = CurrentTileFloorHeight;
+		
+		if (CurrentTileFloorHeight - TileY == 0):
+		{
+			//check tile above
+			if (GetTileSolidityPoint(0, x, y + PlayerHeight - 16)):
+			{
+				//get floor height of tile above player spot
+				FloorHeight = GetTileFloorPoint(0, x, TileY - 16);
+			}
+		}
+		
+		if (FloorHeight <= y + PlayerHeight):
+		{
+			//snap player to floor if we're inside the floor
+			y = FloorHeight - PlayerHeight;
+			Landed = 1;
+			yspeed = 0;
+		}
+		else
+			Landed = 0;
+	}
+	else
+		Landed = 0;
+	
+	/*if (CheckTileCollisionPoint(0, x, CollisionTileHeight)):
+	{
+		Landed = 1;
+		yspeed = 0;
+		
+		//nailing the character to the floor to prevent going into slopes
+		y = GetTileFloorPoint(0, x, CollisionTileHeight) - PlayerHeight;
+	}
+	else
+		Landed = 0;*/
+	
+	//horizontal movement
+	if (IsButtonHeld(KEY_LEFT)):
+		xspeed = -2;	
+	else if (IsButtonHeld(KEY_RIGHT)):
+		xspeed = 2;
+	else
+		xspeed = 0;
+	
+	//jump
+	if (IsButtonPressed(KEY_A) && Landed):
+	{
+		yspeed = -5;
+		Landed = 0;
+	}
+		
+	if (Landed == 0 && yspeed < 7):
+		yspeed += 0.7;
+	
+	//quick animation code
+	if (Landed == 0):
+	{
+		AnimationIndex = PlayerJump;
+		ImageIndex = 0;
+	}
+	else if (xspeed != 0):
+	{
+		AnimationIndex = PlayerWalk;
+		ImageIndex += 0.25;
+	}
+	else
+	{
+		AnimationIndex = PlayerIdle;
+		ImageIndex = 0;
+	}
+
+	x += xspeed;
+	y += yspeed;
+	
+	SetCameraPos(x, y);
+}
+
+func void Draw()
+{
+	DrawSprite(x, y, AnimationIndex, ImageIndex);
+}
