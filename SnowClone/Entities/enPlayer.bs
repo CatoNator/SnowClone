@@ -21,54 +21,36 @@ func void Spawn()
 	yspeed = 0;
 }
 
+func int FindFloorHeight()
+{
+	//no break statement yet
+	int i = 0;
+	
+	//3 loops
+	while (i < 3):
+	{
+		if (GetTileSolidityPoint(0, x, y + 16*i)):
+			return GetTileFloorPoint(0, x, y + 16*i);
+			
+		i += 1;
+	}
+	
+	//no floor found, so we'll just set an arbitrary value below the player
+	return y + 64;
+}
+
 func void Update()
 {
-	//floor collision
-	//int CollisionOrigin = CheckTileCollisionPoint(0, x, y);
-	//int CollisionFeet = CheckTileCollisionPoint(0, x, y + PlayerHeight);
+	int Floor = 128; //FindFloorHeight();
 	
-	//check solidity at feet level
-	if (GetTileSolidityPoint(0, x, y + PlayerHeight)):
+	if (y + PlayerHeight >= Floor - 2):
 	{
-		//if the tile below is a full tile
-		int TileY = ((y + PlayerHeight) / 16) * 16;
-		int CurrentTileFloorHeight = GetTileFloorPoint(0, x, y + PlayerHeight);
-		
-		int FloorHeight = CurrentTileFloorHeight;
-		
-		if (CurrentTileFloorHeight - TileY == 0):
-		{
-			//check tile above
-			if (GetTileSolidityPoint(0, x, y + PlayerHeight - 16)):
-			{
-				//get floor height of tile above player spot
-				FloorHeight = GetTileFloorPoint(0, x, TileY - 16);
-			}
-		}
-		
-		if (FloorHeight <= y + PlayerHeight):
-		{
-			//snap player to floor if we're inside the floor
-			y = FloorHeight - PlayerHeight;
-			Landed = 1;
-			yspeed = 0;
-		}
-		else
-			Landed = 0;
+		y = Floor - PlayerHeight;
+		Landed = 1;
+		yspeed = 0;
 	}
 	else
 		Landed = 0;
-	
-	/*if (CheckTileCollisionPoint(0, x, CollisionTileHeight)):
-	{
-		Landed = 1;
-		yspeed = 0;
-		
-		//nailing the character to the floor to prevent going into slopes
-		y = GetTileFloorPoint(0, x, CollisionTileHeight) - PlayerHeight;
-	}
-	else
-		Landed = 0;*/
 	
 	//horizontal movement
 	if (IsButtonHeld(KEY_LEFT)):
