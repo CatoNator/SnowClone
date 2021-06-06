@@ -36,12 +36,12 @@ func int FindFloorHeight()
 	}
 	
 	//no floor found, so we'll just set an arbitrary value below the player
-	return y + 64;
+	return y + 128;
 }
 
 func void Update()
 {
-	int Floor = 128; //FindFloorHeight();
+	int Floor = FindFloorHeight();
 	
 	if (y + PlayerHeight >= Floor - 2):
 	{
@@ -66,9 +66,14 @@ func void Update()
 		yspeed = -5;
 		Landed = 0;
 	}
+	else if (IsButtonReleased(KEY_A) && Landed == 0 && yspeed < 0):
+	{
+		//stopping the jump
+		yspeed = 0;
+	}
 		
 	if (Landed == 0 && yspeed < 7):
-		yspeed += 0.7;
+		yspeed += 0.32; //gravity value; this should be converted to a macro
 	
 	//quick animation code
 	if (Landed == 0):
