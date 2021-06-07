@@ -5,7 +5,14 @@ int y = 0;
 int xspeed = 0;
 int yspeed = 0;
 
+//should be turned into a macro once that's done
+//macro PlayerHeight 11;
 int PlayerHeight = 11; //11px, in the penguin sprite
+
+//gravity
+//macro Gravity 0.32;
+
+int Direction = 1;
 
 int Landed = 0;
 
@@ -54,9 +61,15 @@ func void Update()
 	
 	//horizontal movement
 	if (IsButtonHeld(KEY_LEFT)):
-		xspeed = -2;	
+	{
+		xspeed = -2;
+		Direction = -1;
+	}
 	else if (IsButtonHeld(KEY_RIGHT)):
+	{
 		xspeed = 2;
+		Direction = 1;
+	}
 	else
 		xspeed = 0;
 	
@@ -70,6 +83,13 @@ func void Update()
 	{
 		//stopping the jump
 		yspeed = 0;
+	}
+	
+	//shooting
+	if (IsButtonPressed(KEY_B)):
+	{
+		entity bullet =SpawnEntity(x, y, enPlayerBullet);
+		bullet->Direction = Direction;
 	}
 		
 	if (Landed == 0 && yspeed < 7):
@@ -100,5 +120,6 @@ func void Update()
 
 func void Draw()
 {
-	DrawSprite(x, y, AnimationIndex, ImageIndex);
+	//DrawSpriteExt(x, y, PlayerGunWalk, ImageIndex, 0, Direction, 1);
+	DrawSpriteExt(x, y, AnimationIndex, ImageIndex, 0, Direction, 1);
 }

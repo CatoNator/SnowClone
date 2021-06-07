@@ -1,0 +1,34 @@
+//The following vars should be declared in every entity.
+//The compiler doesn't add these by default, so make sure you have them!
+int x = 0;
+int y = 0;
+
+//multiplier for bullet direction?
+int Direction = 1;
+
+int Life = 120;
+
+//These functions are used by the entity system to run the code
+
+//Ran when the entity is first spawned
+func void Spawn()
+{
+}
+
+//Ran every frame, to update the game logic
+func void Update()
+{
+	if (Life <= 0):
+		DestroySelf();
+	else
+		Life -= 1;
+	
+	//speed?
+	x += Direction * 10;
+}
+
+//Ran every frame after every entity has been updated
+func void Draw()
+{
+	DrawSprite(x, y, PBulletSmall, 0);
+}

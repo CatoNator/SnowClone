@@ -8,9 +8,13 @@
       <Animation name="PlayerGunWalk" frames="6" width="15" height="9" xorig="0" yorig="0" />
       <Animation name="PlayerGunFire" frames="3" width="28" height="12" xorig="0" yorig="0" />
     </Sprite>
+    <Sprite name="PlayerBullet">
+      <Animation name="PBulletSmall" frames="1" width="13" height="10" xorig="6" yorig="5" />
+    </Sprite>
   </Sprites>
   <Entities>
     <Entity name="enPlayer" sprite="Player" script="enPlayer.bs" soundbank="Player" />
+    <Entity name="enPlayerBullet" sprite="PlayerBullet" script="enPlayerBullet.bs" soundbank="" />
   </Entities>
   <Soundbanks>
     <Soundbank name="Player" />
