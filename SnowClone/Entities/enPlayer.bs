@@ -28,6 +28,7 @@ func void Spawn()
 	yspeed = 0;
 }
 
+//finding the current floor height
 func int FindFloorHeight()
 {
 	//no break statement yet
@@ -48,6 +49,7 @@ func int FindFloorHeight()
 
 func void Update()
 {
+	//tile collision logic
 	int Floor = FindFloorHeight();
 	
 	if (y + PlayerHeight >= Floor - 2):
