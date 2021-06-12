@@ -2,11 +2,13 @@
 <CatEngineScene name="test">
   <Tilesets>
     <Tileset firstgid="1" file="tlsTest" />
+    <Tileset firstgid="26" file="tlsBgTest" />
   </Tilesets>
   <Entities>
     <Entity name="enPlayer" />
+    <Entity name="enPlayerBullet" />
   </Entities>
-  <TileLayer id="0" width="26" height="15" xoffs="0" yoffs="0" hrepeat="False" vrepeat="False" xparallax="0" yparallax="0" fglayer="False">0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  <TileLayer id="0" width="26" height="15" xoffs="0" yoffs="0" hrepeat="False" vrepeat="False" xparallax="0" yparallax="0" fglayer="True">0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -22,16 +24,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 </TileLayer>
-  <TileLayer id="1" width="10" height="10" xoffs="0" yoffs="0" hrepeat="False" vrepeat="False" xparallax="0" yparallax="0" fglayer="False">0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
+  <TileLayer id="1" width="2" height="2" xoffs="0" yoffs="0" hrepeat="True" vrepeat="True" xparallax="0,5" yparallax="0,5" fglayer="False">26,27,
+27,26,
 </TileLayer>
   <TileLayer id="2" width="10" height="10" xoffs="0" yoffs="0" hrepeat="False" vrepeat="False" xparallax="0" yparallax="0" fglayer="False">0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,

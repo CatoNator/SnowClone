@@ -33,6 +33,7 @@
   </Languages>
   <Tilesets>
     <Tileset name="tlsTest" hasmask="True" />
+    <Tileset name="tlsBgTest" hasmask="False" />
   </Tilesets>
   <Scenes>
     <Scene name="test" />
