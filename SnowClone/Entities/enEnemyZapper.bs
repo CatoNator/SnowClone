@@ -1,0 +1,21 @@
+//The following vars should be declared in every entity.
+//The compiler doesn't add these by default, so make sure you have them!
+int x = 0;
+int y = 0;
+
+//These functions are used by the entity system to run the code
+
+//Ran when the entity is first spawned
+func void Spawn()
+{
+}
+
+//Ran every frame, to update the game logic
+func void Update()
+{
+}
+
+//Ran every frame after every entity has been updated
+func void Draw()
+{
+}

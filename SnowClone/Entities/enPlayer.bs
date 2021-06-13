@@ -78,6 +78,7 @@ func void Update()
 	//jump
 	if (IsButtonPressed(KEY_A) && Landed):
 	{
+		//PlaySound(PlayerJump);
 		yspeed = -5;
 		Landed = 0;
 	}
@@ -90,12 +91,13 @@ func void Update()
 	//shooting
 	if (IsButtonPressed(KEY_B)):
 	{
-		entity bullet =SpawnEntity(x, y, enPlayerBullet);
+		//PlaySound(FirePistol);
+		entity bullet = SpawnEntity(x, y, enPlayerBullet);
 		bullet->Direction = Direction;
 	}
 		
 	if (Landed == 0 && yspeed < 7):
-		yspeed += 0.32; //gravity value; this should be converted to a macro
+		yspeed += Gravity; //f-f-f-falling
 	
 	//quick animation code
 	if (Landed == 0):

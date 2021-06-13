@@ -1,0 +1,70 @@
+//The following vars should be declared in every entity.
+//The compiler doesn't add these by default, so make sure you have them!
+int x = 0;
+int y = 0;
+
+int xspeed = 0;
+int yspeed = 0;
+
+int Landed = 0;
+
+int PlayerHeight = 8;
+
+int Direction = -1;
+
+float ImageIndex = 0.0;
+
+//Ran when the entity is first spawned
+func void Spawn()
+{
+}
+
+//finding the current floor height
+func int FindFloorHeight()
+{
+	//no break statement yet
+	int i = 0;
+	
+	//3 loops
+	while (i < 3):
+	{
+		if (GetTileSolidityPoint(0, x, y + 16*i)):
+			return GetTileFloorPoint(0, x, y + 16*i);
+			
+		i += 1;
+	}
+	
+	//no floor found, so we'll just set an arbitrary value below the player
+	return y + 128;
+}
+
+func void Update()
+{
+	//tile collision logic
+	int Floor = FindFloorHeight();
+	
+	if (y + PlayerHeight >= Floor - 2):
+	{
+		y = Floor - PlayerHeight;
+		Landed = 1;
+		yspeed = 0;
+	}
+	else
+		Landed = 0;
+		
+	xspeed = Direction;
+		
+	if (Landed == 0 && yspeed < 7):
+		yspeed += Gravity; //f-f-f-falling
+		
+	x += xspeed;
+	y += yspeed;
+	
+	ImageIndex += 0.2;
+}
+
+//Ran every frame after every entity has been updated
+func void Draw()
+{
+	DrawSpriteExt(x, y, Walk, ImageIndex, 0, Direction, 1);
+}
