@@ -29,7 +29,8 @@
     <Soundbank name="Player" />
   </Soundbanks>
   <Music>
-    <MusicTrack name="forest_puz_mix" loopstart="1058592" loop="true" />
+    <MusicTrack name="test" loopstart="1058592" loop="true" />
+	<MusicTrack name="Boss" loopstart="92172" loop="true" />
   </Music>
   <Fonts>
     <Font name="FontEnglish" width="7" height="11" />

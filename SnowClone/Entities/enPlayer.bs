@@ -5,6 +5,9 @@ int y = 0;
 int xspeed = 0;
 int yspeed = 0;
 
+//for multiplayer
+int PlayerIndex = 0;
+
 //should be turned into a macro once that's done
 //macro PlayerHeight 11;
 int PlayerHeight = 11; //11px, in the penguin sprite
