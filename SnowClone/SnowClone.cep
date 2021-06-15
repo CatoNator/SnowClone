@@ -23,14 +23,15 @@
     <Entity name="enPlayer" sprite="Player" script="enPlayer.bs" soundbank="Player" />
     <Entity name="enPlayerBullet" sprite="PlayerBullet" script="enPlayerBullet.bs" soundbank="" />
     <Entity name="enEnemyNormal" sprite="EnemyNormal" script="enEnemyNormal.bs" soundbank="" />
-    <Entity name="enEnemyZapper" sprite="EnemyZapper" script="enEnemyZapper.bs" soundbank="" />
+    <Entity name="enEnemyZapper" sprite="EnemyZapper" script="enEnemyZapper.bs" soundbank="EnemyZapper" />
   </Entities>
   <Soundbanks>
     <Soundbank name="Player" />
+    <Soundbank name="EnemyZapper" />
   </Soundbanks>
   <Music>
     <MusicTrack name="test" loopstart="1058592" loop="true" />
-	<MusicTrack name="Boss" loopstart="92172" loop="true" />
+    <MusicTrack name="Boss" loopstart="92172" loop="true" />
   </Music>
   <Fonts>
     <Font name="FontEnglish" width="7" height="11" />
